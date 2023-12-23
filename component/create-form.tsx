@@ -22,5 +22,16 @@ export default function CreateForm() {
       toast(state.message);
     }
   }, [state.message]);
-  return <div></div>;
+  return (
+    <div>
+      <button
+        className="btn btn-primary"
+        onClick={() =>
+          (document.getElementById("my_modal_3")! as any).showModal()
+        }
+      >
+        Create Product
+      </button>
+    </div>
+  );
 }
