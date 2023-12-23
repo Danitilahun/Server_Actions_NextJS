@@ -2,7 +2,7 @@
 import { revalidatePath } from "next/cache";
 import ProductModel from "./product-model";
 import dbConnect from "./db-connect";
-import { schema } from "./validation";
+import { Deleteschema, schema } from "./validation";
 
 export async function createProduct(prevState: any, formData: FormData) {
   const parse = schema.safeParse({
@@ -27,4 +27,11 @@ export async function createProduct(prevState: any, formData: FormData) {
   } catch (e) {
     return { message: "Failed to create product" };
   }
+}
+
+export async function deleteProduct(formData: FormData) {
+  const data = Deleteschema.parse({
+    _id: formData.get("_id"),
+    name: formData.get("name"),
+  });
 }
