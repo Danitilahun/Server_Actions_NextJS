@@ -16,4 +16,15 @@ export async function createProduct(prevState: any, formData: FormData) {
     console.log(parse.error);
     return { message: "Form data is not valid" };
   }
+
+  const data = parse.data;
+  try {
+    await dbConnect();
+    const product = new ProductModel(data);
+    await product.save();
+    revalidatePath("/");
+    return { message: `Created product ${data.name}` };
+  } catch (e) {
+    return { message: "Failed to create product" };
+  }
 }
