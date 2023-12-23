@@ -34,4 +34,13 @@ export async function deleteProduct(formData: FormData) {
     _id: formData.get("_id"),
     name: formData.get("name"),
   });
+
+  try {
+    await dbConnect();
+    await ProductModel.findOneAndDelete({ _id: data._id });
+    revalidatePath("/");
+    return { message: `Deleted product ${data.name}` };
+  } catch (e) {
+    return { message: "Failed to delete product" };
+  }
 }
