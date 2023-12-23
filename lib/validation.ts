@@ -6,3 +6,8 @@ export const schema = z.object({
   price: z.number().min(1),
   rating: z.number().min(1).max(5),
 });
+
+export const Deleteschema = z.object({
+  _id: z.string().min(1),
+  name: z.string().min(1),
+});
