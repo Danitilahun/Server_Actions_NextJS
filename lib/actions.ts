@@ -11,4 +11,9 @@ export async function createProduct(prevState: any, formData: FormData) {
     price: Number(formData.get("price")),
     rating: Math.ceil(Math.random() * 5),
   });
+
+  if (!parse.success) {
+    console.log(parse.error);
+    return { message: "Form data is not valid" };
+  }
 }
