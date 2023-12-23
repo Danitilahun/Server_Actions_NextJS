@@ -1,18 +1,16 @@
 "use client";
 
+import { useFormState, useFormStatus } from "react-dom";
 import { createProduct } from "@/lib/actions";
 import { useEffect, useRef } from "react";
-import { useFormState, useFormStatus } from "react-dom";
 import toast from "react-hot-toast";
 
 export default function CreateForm() {
   const [state, formAction] = useFormState(createProduct, {
     message: "",
   });
-
   const { pending } = useFormStatus();
   const ref = useRef<HTMLFormElement>(null);
-
   useEffect(() => {
     if (state.message.indexOf("Created product") === 0) {
       (document.getElementById("my_modal_3") as any)!.close();
@@ -22,6 +20,7 @@ export default function CreateForm() {
       toast(state.message);
     }
   }, [state.message]);
+
   return (
     <div>
       <button
@@ -32,7 +31,6 @@ export default function CreateForm() {
       >
         Create Product
       </button>
-
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
           <h2 className="tex-2xl font-bold pm-4">Create Product</h2>
