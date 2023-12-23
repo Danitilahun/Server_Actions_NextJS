@@ -1,6 +1,6 @@
-import CreateForm from "@/component/create-form";
-import DeleteForm from "@/component/delete-form";
-import Rating from "@/component/rating";
+import CreateForm from "@/app/create-form";
+import DeleteForm from "@/app/delete-form";
+import Rating from "@/app/rating";
 import dbConnect from "@/lib/db-connect";
 import ProductModel, { Product } from "@/lib/product-model";
 import Image from "next/image";
